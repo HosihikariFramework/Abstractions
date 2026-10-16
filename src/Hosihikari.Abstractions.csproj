@@ -8,6 +8,19 @@
     <AssemblyName>Hosihikari.Abstractions</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Hosihikari.Abstractions</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>HosihikariFramework</Authors>
+    <Description>Plugin contract for the Hosihikari framework: IPlugin, IPluginContext, IPluginProvider, host services and the plugin manifest.</Description>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/HosihikariFramework/Abstractions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>minecraft;bedrock;bds;plugin;hosihikari</PackageTags>
+    <!-- 契约要有 XML 文档，引用方才有提示。 -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <!-- 只引抽象包（ADR-0007）：实现包留在 PluginManager，契约因此能驻留共享层。 -->
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.13" />
