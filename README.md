@@ -19,6 +19,8 @@ Hosihikari 框架的**插件契约**：插件实现的那几个类型，以及�
 ```csharp
 using Hosihikari;
 
+[assembly: EntryPoint<MyPlugin>]
+
 public sealed class MyPlugin : IPlugin
 {
     public void OnLoad(IPluginContext context) =>
@@ -30,7 +32,7 @@ public sealed class MyPlugin : IPlugin
 }
 ```
 
-入口类型写在插件清单的 `extraInfo.entryType` 里（如 `My.MyPlugin`），由框架反射构造 —— 框架不去程序集里"找唯一的那个实现"。
+入口用程序集上的 `[assembly: EntryPoint<T>]` 声明。这个特性的泛型约束是 `where T : IPlugin, new()`，所以**类型实现了契约**与**有无参构造**两条都由编译器保证 —— 写错编译不过。
 
 ## 清单
 
@@ -45,13 +47,12 @@ public sealed class MyPlugin : IPlugin
   "dependencies": [{ "name": "hosihikari" }],
   "extraInfo": {
     "api": "1",
-    "format_version": "1",
-    "entryType": "My.MyPlugin"
+    "format_version": "1"
   }
 }
 ```
 
-`type` 决定由哪个 Provider 处理；`api` 必须等于 `PluginContract.ApiVersion`，不匹配的包在**载入之前**就会被剔除并给出可读报告。
+`type` 决定由哪个 Provider 处理 —— **怎么从包里找到入口，是那个 Provider 自己的事**。`api` 必须等于 `PluginContract.ApiVersion`，不匹配的包在**载入之前**就会被剔除并给出可读报告。
 
 ## 作者要知道的几条
 
