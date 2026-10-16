@@ -4,7 +4,6 @@ namespace Hosihikari;
 
 /// <summary>
 /// 插件清单（ADR-0006）。格式取 LeviLamina 的 <c>manifest.json</c>，我们自己的字段住在 <c>extraInfo</c>。
-/// 入口**类型**由程序集上的 <see cref="EntryPointAttribute{T}"/> 声明（ADR-0008）。
 /// </summary>
 public sealed class PluginManifest
 {
