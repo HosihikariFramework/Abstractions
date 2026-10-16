@@ -3,8 +3,8 @@ using System.Text.Json.Serialization;
 namespace Hosihikari;
 
 /// <summary>
-/// 插件清单（ADR-0006）。格式取 LeviLamina 的 <c>manifest.json</c>，我们自己的字段住在 <c>extraInfo</c> ——
-/// <c>entry</c> 是它的文件路径语义，我们的入口类型是 <c>extraInfo.entryType</c>。
+/// 插件清单（ADR-0006）。格式取 LeviLamina 的 <c>manifest.json</c>，我们自己的字段住在 <c>extraInfo</c>。
+/// 入口**类型**不在这里 —— 它由程序集上的 <see cref="EntryPointAttribute{T}"/> 声明（ADR-0008）。
 /// </summary>
 public sealed class PluginManifest
 {
@@ -33,10 +33,6 @@ public sealed class PluginManifest
     /// <summary>清单 schema 版本（ADR-0012）。</summary>
     [JsonIgnore]
     public string? FormatVersion => ExtraInfo.GetValueOrDefault("format_version");
-
-    /// <summary>入口类型，如 <c>Foo.FooPlugin</c>（ADR-0008）。</summary>
-    [JsonIgnore]
-    public string? EntryType => ExtraInfo.GetValueOrDefault("entryType");
 }
 
 /// <summary>一条依赖声明。</summary>
