@@ -17,9 +17,14 @@
     <RepositoryUrl>https://github.com/HosihikariFramework/Abstractions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>minecraft;bedrock;bds;plugin;hosihikari</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <!-- 契约要有 XML 文档，引用方才有提示。 -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 
   <ItemGroup>
     <!-- 只引抽象包（ADR-0007）：实现包留在 PluginManager，契约因此能驻留共享层。 -->

@@ -6,6 +6,7 @@ namespace Hosihikari;
 /// <summary>框架交给插件的一切（ADR-0007）。能力面止于此，BDS 能力不在其中（ADR-0001）。</summary>
 public interface IPluginContext
 {
+    /// <summary>插件名，等于插件包目录名（ADR-0006）。</summary>
     string Name { get; }
 
     /// <summary>插件包目录。</summary>
