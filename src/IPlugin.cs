@@ -5,6 +5,12 @@ public static class PluginContract
 {
     /// <summary>当前的契约主版本。清单里的 <c>api</c> 与它不匹配的包在载入之前就会被剔除。</summary>
     public const string ApiVersion = "1";
+
+    /// <summary>
+    /// Shim 作为父级插件的名字，也是清单里 <c>type</c> 该写的值（ADR-0006）。
+    /// 它是父级命名空间里的一等名字：插件靠 <c>dependencies</c> 声明对它的依赖来保证排序。
+    /// </summary>
+    public const string ShimModName = "hosihikari";
 }
 
 /// <summary>插件作者实现的契约（ADR-0008）。钩子只承诺顺序与幂等，不承诺与 BDS 阶段的对应（ADR-0013）。</summary>

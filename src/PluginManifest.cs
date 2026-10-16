@@ -13,7 +13,9 @@ public sealed class PluginManifest
     /// <summary>包内入口文件的相对路径。</summary>
     public string Entry { get; set; } = "";
 
-    /// <summary>插件类型，决定由哪个 Provider 处理。</summary>
+    /// <summary>
+    /// 父级的路由键，恒为 <see cref="PluginContract.ShimModName"/> —— 父级靠它把包交给我们（ADR-0006）。
+    /// </summary>
     public string Type { get; set; } = "";
 
     /// <summary>插件自身版本。</summary>
@@ -24,6 +26,10 @@ public sealed class PluginManifest
 
     /// <summary>框架自己的字段都放这里 —— 清单里留给第三方的扩展位。</summary>
     public Dictionary<string, string> ExtraInfo { get; set; } = [];
+
+    /// <summary>处理这个包的 Provider（ADR-0002）。不写就是 <c>assembly</c>。</summary>
+    [JsonIgnore]
+    public string Provider => ExtraInfo.GetValueOrDefault("provider") ?? "assembly";
 
     /// <summary>插件依赖的契约主版本（ADR-0012）。</summary>
     [JsonIgnore]
