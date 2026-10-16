@@ -8,6 +8,10 @@ on:
 jobs:
   nuget:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # 换 OIDC 令牌（Trusted Publishing）
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,10 +23,18 @@ jobs:
       - name: 打包
         run: dotnet pack src/Hosihikari.Abstractions.csproj -c Release -o out
 
-      # 需要仓库 secret NUGET_API_KEY（nuget.org 的 API key）。
+      # 用 OIDC 令牌换一把临时 API key —— 仓库里不存任何长期密钥。
+      # 换来的 key 只有一小时有效期、且一个令牌只能换一把，所以这一步紧贴推送。
+      - name: 换临时 API key
+        uses: NuGet/login@v1
+        id: login
+        with:
+          # nuget.org 的用户名（profile name），不是邮箱。
+          user: ${{ secrets.NUGET_USER }}
+
       - name: 推送
         run: >
           dotnet nuget push out/*.nupkg
-          --api-key ${{ secrets.NUGET_API_KEY }}
+          --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
