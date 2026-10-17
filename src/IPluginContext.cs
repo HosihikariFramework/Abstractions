@@ -27,6 +27,13 @@ public interface IPluginContext
     /// <summary>调度器。跑在线程池上，不承诺游戏主线程（ADR-0013）。</summary>
     IScheduler Scheduler { get; }
 
+    /// <summary>
+    /// 其他插件提供的服务（ADR-0027）。插件之间共享类型的唯一通道 —— 它们不共享程序集，
+    /// 直接引用另一个插件只会拿到自己包里的副本（ADR-0026）。
+    /// 你登记的东西在卸载时由框架收回。
+    /// </summary>
+    IPluginServiceRegistry PluginServices { get; }
+
     /// <summary>服务解析。载体对象与载体事件是自愿取用的逃生舱（ADR-0019）。</summary>
     IServiceProvider Services { get; }
 }
