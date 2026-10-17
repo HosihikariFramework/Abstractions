@@ -36,4 +36,13 @@ public interface IPluginContext
 
     /// <summary>服务解析。载体对象与载体事件是自愿取用的逃生舱（ADR-0019）。</summary>
     IServiceProvider Services { get; }
+
+    /// <summary>
+    /// 把一个 Provider 登记给框架（ADR-0002）。Provider 本身就是一个插件包，装载时用它把自己
+    /// 交出去；**此后**装载的包才会被路由到它 —— 所以需要它的插件要在清单里声明依赖它（ADR-0006）。
+    ///
+    /// 登记之后不能撤销：它造出来的实例的类型住在它的装载上下文里。
+    /// </summary>
+    /// <param name="provider">要接管的插件类型。</param>
+    void RegisterProvider(IPluginProvider provider);
 }
