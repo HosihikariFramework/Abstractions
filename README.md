@@ -32,8 +32,8 @@ public sealed class MyPlugin : IPlugin
     public void OnLoad(IPluginContext context) =>
         context.Logger.LogInformation("loaded: {Dir}", context.PackageDirectory);
 
-    public void OnEnable() { }
-    public void OnDisable() { }
+    public PluginHookResult OnEnable() => PluginHookResult.Allow();
+    public PluginHookResult OnDisable() => PluginHookResult.Allow();
     public void OnUnload() { }
 }
 ```
@@ -56,7 +56,7 @@ A plugin package is a directory; the directory name is the plugin name, and it m
   "version": "1.0.0",
   "dependencies": [{ "name": "hosihikari" }],
   "extraInfo": {
-    "api": "1",
+    "api": "2",
     "format_version": "1",
     "provider": "assembly"
   }

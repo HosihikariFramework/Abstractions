@@ -28,8 +28,8 @@ public sealed class MyPlugin : IPlugin
     public void OnLoad(IPluginContext context) =>
         context.Logger.LogInformation("载入：{Dir}", context.PackageDirectory);
 
-    public void OnEnable() { }
-    public void OnDisable() { }
+    public PluginHookResult OnEnable() => PluginHookResult.Allow();
+    public PluginHookResult OnDisable() => PluginHookResult.Allow();
     public void OnUnload() { }
 }
 ```
@@ -48,7 +48,7 @@ public sealed class MyPlugin : IPlugin
   "version": "1.0.0",
   "dependencies": [{ "name": "hosihikari" }],
   "extraInfo": {
-    "api": "1",
+    "api": "2",
     "format_version": "1",
     "provider": "assembly"
   }

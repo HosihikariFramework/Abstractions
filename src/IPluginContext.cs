@@ -45,4 +45,11 @@ public interface IPluginContext
     /// </summary>
     /// <param name="provider">要接管的插件类型。</param>
     void RegisterProvider(IPluginProvider provider);
+
+    /// <summary>
+    /// 报告一个在钩子之外发生的故障（进程外环境死亡、协议错误等，ADR-0030）。
+    /// 宿主按故障处理：卸载该插件，成功后通知载体。进程内 Provider 通常用不到。
+    /// </summary>
+    /// <param name="reason">可读的原因，进日志与父级的账。</param>
+    void ReportFault(string reason);
 }
