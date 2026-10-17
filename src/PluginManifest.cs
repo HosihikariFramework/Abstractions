@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Hosihikari;
@@ -24,20 +25,32 @@ public sealed class PluginManifest
     /// <summary>依赖的其它插件。加载按拓扑序、卸载按反序（ADR-0004）。</summary>
     public List<ManifestDependency> Dependencies { get; set; } = [];
 
-    /// <summary>框架自己的字段都放这里 —— 清单里留给第三方的扩展位。</summary>
-    public Dictionary<string, string> ExtraInfo { get; set; } = [];
+    /// <summary>
+    /// 框架自己的字段都放这里 —— 清单里留给第三方的扩展位。
+    /// 值保持原始 JSON：字符串、数组（例如进程外插件的 <c>command</c>）都放得下。
+    /// </summary>
+    public Dictionary<string, JsonElement> ExtraInfo { get; set; } = [];
 
     /// <summary>处理这个包的 Provider（ADR-0002）。不写就是 <c>assembly</c>。</summary>
     [JsonIgnore]
-    public string Provider => ExtraInfo.GetValueOrDefault("provider") ?? "assembly";
+    public string Provider =>
+        ExtraInfo.TryGetValue("provider", out var value) && value.ValueKind == JsonValueKind.String
+            ? value.GetString() ?? "assembly"
+            : "assembly";
 
     /// <summary>插件依赖的契约主版本（ADR-0012）。</summary>
     [JsonIgnore]
-    public string? Api => ExtraInfo.GetValueOrDefault("api");
+    public string? Api =>
+        ExtraInfo.TryGetValue("api", out var value) && value.ValueKind == JsonValueKind.String
+            ? value.GetString()
+            : null;
 
     /// <summary>清单 schema 版本（ADR-0012）。</summary>
     [JsonIgnore]
-    public string? FormatVersion => ExtraInfo.GetValueOrDefault("format_version");
+    public string? FormatVersion =>
+        ExtraInfo.TryGetValue("format_version", out var value) && value.ValueKind == JsonValueKind.String
+            ? value.GetString()
+            : null;
 }
 
 /// <summary>一条依赖声明。</summary>
