@@ -1,6 +1,6 @@
 # Hosihikari.Abstractions
 
-Hosihikari 框架的**插件契约**：插件实现的那几个类型，以及它从框架手里拿到的东西。
+星光框架的**插件契约**：插件实现的那几个类型，以及它从框架手里拿到的东西。
 
 框架本体与其余包见 [HosihikariFramework](https://github.com/HosihikariFramework)。
 
