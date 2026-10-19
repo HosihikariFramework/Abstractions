@@ -9,7 +9,7 @@
 ## 引用
 
 ```xml
-<PackageReference Include="Hosihikari.Abstractions" Version="[0.5.0]" ExcludeAssets="runtime" />
+<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.0]" ExcludeAssets="runtime" />
 ```
 
 **`ExcludeAssets="runtime"` 不能省。** 契约驻留在**共享层** —— 宿主已经载入过这一份；插件包里若再带一份，就是同一个类型名下的第二个身份，插件转型会在运行期失败（而且报错点离病因很远）。
