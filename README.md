@@ -78,6 +78,9 @@ Provider's business**. `api` and `format_version` must equal `PluginContract.Api
   events are outside it.
 - **Unloading must actually reclaim.** No long-lived static state, no bare threads. The framework
   reclaims event subscriptions and timers on unload, but that is a safety net, not a licence.
+- **Disable closes the callback gate first.** The framework stops delivering events and timer
+  callbacks before `OnDisable`; a refusal reopens it. In-flight callbacks finish; services and
+  plugin-owned threads are outside this guarantee (ADR-0035).
 - **Native libraries live with the process.** Put them at the package root or under
   `runtimes/<current portable RID>/native` (the RID directory wins). Unloading reclaims the managed
   ALC only; native modules and their static state survive reloads. Stop threads and unregister

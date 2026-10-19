@@ -37,12 +37,13 @@ public interface IPlugin
     /// <param name="context">框架交给插件的一切。</param>
     void OnLoad(IPluginContext context);
 
-    /// <summary>启用：可以接活了。拒绝时留在册、未启用（ADR-0030）。</summary>
+    /// <summary>启用：可以接活了。成功后打开作用域闸门；拒绝时留在册、未启用（ADR-0030 / 0035）。</summary>
     PluginHookResult OnEnable();
 
     /// <summary>
-    /// 停用：停止接活。父级态下由父级驱动；自持态下不会被调用（ADR-0020）。
-    /// 拒绝时本次停用失败；卸载经停用，同样中止（ADR-0030）。
+    /// 停用：停止接活。框架先关闭作用域闸门，不再投递事件与定时器回调；已在执行的回调允许跑完。
+    /// 拒绝时闸门重开；卸载经停用，同样中止（ADR-0030 / 0035）。
+    /// 父级态下由父级驱动；自持态下不会被调用（ADR-0020）。
     /// </summary>
     PluginHookResult OnDisable();
 
