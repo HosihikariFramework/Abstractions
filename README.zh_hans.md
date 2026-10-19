@@ -55,7 +55,7 @@ public sealed class MyPlugin : IPlugin
 }
 ```
 
-`type` 是父级加载器的路由键，恒为 `hosihikari`；`extraInfo.provider` 决定由哪个 Provider 处理 —— **怎么从包里找到入口，是那个 Provider 自己的事**。`api` 必须等于 `PluginContract.ApiVersion`，不匹配的包在**载入之前**就会被剔除并给出可读报告。
+`type` 是父级加载器的路由键，恒为 `hosihikari`；`extraInfo.provider` 决定由哪个 Provider 处理 —— **怎么从包里找到入口，是那个 Provider 自己的事**。`api` 与 `format_version` 必须分别等于 `PluginContract.ApiVersion` 与 `PluginContract.FormatVersion`；`entry` 必须是包内相对路径。不满足的包在**载入之前**就会被剔除并给出可读报告。
 
 ## 作者要知道的几条
 

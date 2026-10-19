@@ -65,7 +65,8 @@ A plugin package is a directory; the directory name is the plugin name, and it m
 
 `type` is the parent loader's routing key and is always `hosihikari`. `extraInfo.provider` picks
 the Provider that handles the package — **how to find the entry point inside the package is that
-Provider's business**. `api` must equal `PluginContract.ApiVersion`; a mismatch is rejected
+Provider's business**. `api` and `format_version` must equal `PluginContract.ApiVersion` and
+`PluginContract.FormatVersion`; `entry` must stay inside the package. A violation is rejected
 **before** anything is loaded, with a readable report.
 
 ## Things an author should know
