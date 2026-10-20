@@ -89,6 +89,12 @@ Provider's business**. `api` and `format_version` must equal `PluginContract.Api
   Cross-plugin communication goes through the framework's channel, and the types on that channel
   must come from the shared layer.
 
+## Plugin template
+
+This repository also carries the `dotnet new` template for precompiled assembly plugins. See
+[`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template); source C#, F#, and
+out-of-process plugins have their own template repositories.
+
 ## Licence
 
 LGPL-3.0-or-later, see [LICENSE.md](LICENSE.md).

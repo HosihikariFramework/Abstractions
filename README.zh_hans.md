@@ -66,6 +66,12 @@ public sealed class MyPlugin : IPlugin
 - **本机库随进程存活**：放在包根或 `runtimes/<当前可移植 RID>/native`（RID 目录优先）。卸载只回收托管 ALC；本机库与它的静态状态跨重载保留，线程与回调要在 `OnUnload` 里自己收尾。
 - 插件之间不共享程序集：直接引用拿到的是自己包里的副本。跨插件通信走框架的通道，而通道上的类型必须来自共享层。
 
+## 插件模板
+
+本仓同时携带预编译程序集插件的 `dotnet new` 模板，见
+[`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template)；源码 C#、F# 与
+进程外插件各有独立模板仓。
+
 ## 许可
 
 LGPL-3.0-or-later，见 [LICENSE.md](LICENSE.md)。

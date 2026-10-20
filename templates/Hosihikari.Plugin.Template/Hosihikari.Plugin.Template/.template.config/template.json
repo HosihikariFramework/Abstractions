@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "星光",
+  "classifications": ["Hosihikari", "Plugin"],
+  "identity": "Hosihikari.Plugin.Template",
+  "name": "Hosihikari plugin",
+  "shortName": "hosihikari-plugin",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Hosihikari.Plugin.Template",
+  "preferNameDirectory": true
+}

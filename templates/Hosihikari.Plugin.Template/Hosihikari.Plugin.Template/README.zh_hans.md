@@ -1,0 +1,31 @@
+# Hosihikari.Plugin.Template
+
+一个预编译的星光框架插件。核心内置的程序集 Provider 直接装载它，不需要额外的 Provider 包。
+
+## 构建与打包
+
+需要 .NET 10 SDK，以及并列的 `Hosihikari.PluginManager` checkout（或设置
+`HOSIHIKARI_PLUGINMANAGER`）。
+
+```powershell
+pwsh ./pack.ps1
+```
+
+```bash
+bash ./pack.sh
+```
+
+打包器会剔除共享层，在 `dist/Hosihikari.Plugin.Template/` 产出插件 DLL、私有依赖与
+`manifest.json`。把这个目录复制到 `<服务端>/plugins/Hosihikari.Plugin.Template/`。
+
+## 命名
+
+项目名会成为程序集名、命名空间与清单名。请使用合法的 C# 名称（字母、数字、点；不要空格或连字符）。
+清单里的 `name` 必须与包目录名一致。
+
+## 生命周期
+
+`OnLoad` 在依赖就绪后执行；`OnEnable` 打开事件/定时器闸门，拒绝则保持已加载未启用；
+`OnUnload` 释放插件持有的东西。钩子抛出异常属于故障，宿主会卸载插件。
+
+需要源码编译的 C# / F# 插件时，见对应 Provider 与在线作者文档。

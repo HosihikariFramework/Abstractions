@@ -1,0 +1,60 @@
+name: template-verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          path: Hosihikari.Abstractions
+
+      # 打包器在核心仓；fork 让核心按源码编。
+      - uses: actions/checkout@v7
+        with:
+          repository: HosihikariFramework/PluginManagement
+          path: Hosihikari.PluginManager
+
+      - uses: actions/checkout@v7
+        with:
+          repository: HosihikariFramework/Hosihikari.McMaster.NETCore.Plugins
+          path: Hosihikari.McMaster.NETCore.Plugins
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 打包模板
+        run: >
+          dotnet pack
+          Hosihikari.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Template.csproj
+          -c Release -o artifacts
+
+      - name: 生成并构建插件
+        run: |
+          set -euo pipefail
+          dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.0.nupkg
+          dotnet new hosihikari-plugin -n HelloTemplate -o "$RUNNER_TEMP/HelloTemplate"
+          dotnet build "$RUNNER_TEMP/HelloTemplate/HelloTemplate.csproj" -c Release
+
+      - name: 打插件包
+        env:
+          HOSIHIKARI_PLUGINMANAGER: ${{ github.workspace }}/Hosihikari.PluginManager
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/HelloTemplate"
+          bash ./pack.sh
+          test -f dist/HelloTemplate/HelloTemplate.dll
+          test -f dist/HelloTemplate/manifest.json
+          if find dist/HelloTemplate -name 'Hosihikari.Abstractions.dll' | grep -q .; then
+            echo 'the shared contract leaked into the plugin package' >&2
+            exit 1
+          fi
+
+      - name: 清理模板
+        if: always()
+        run: dotnet new uninstall Hosihikari.Plugin.Template || true
