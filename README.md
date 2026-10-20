@@ -93,7 +93,11 @@ Provider's business**. `api` and `format_version` must equal `PluginContract.Api
 
 This repository also carries the `dotnet new` template for precompiled assembly plugins. See
 [`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template); source C#, F#, and
-out-of-process plugins have their own template repositories.
+out-of-process plugins have their own template repositories:
+
+- [CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate)
+- [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate)
+- [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
 ## Licence
 

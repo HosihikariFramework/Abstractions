@@ -3,6 +3,11 @@
 A `dotnet new` template for a precompiled Hosihikari plugin. The generated project is a .NET class
 library with an `EntryPoint<T>`, a manifest, and pack scripts that use the framework's packer.
 
+For source-compiled plugins, see
+[CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate),
+[FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate), and
+[RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate).
+
 ## Build and try it
 
 ```bash

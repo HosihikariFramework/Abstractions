@@ -32,4 +32,8 @@ name.
 the plugin loaded and disabled. `OnUnload` releases what the plugin owns. An exception from a hook
 is a fault and the host unloads the plugin.
 
-For source-compiled C# or F# plugins, see the provider packages and the online authoring guide.
+For source-compiled plugins, see
+[CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate),
+[FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate), and
+[RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate); the online authoring
+guide covers the lifecycle and packaging.

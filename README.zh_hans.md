@@ -70,7 +70,11 @@ public sealed class MyPlugin : IPlugin
 
 本仓同时携带预编译程序集插件的 `dotnet new` 模板，见
 [`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template)；源码 C#、F# 与
-进程外插件各有独立模板仓。
+进程外插件各有独立模板仓：
+
+- [CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate)
+- [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate)
+- [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
 ## 许可
 

@@ -28,4 +28,8 @@ bash ./pack.sh
 `OnLoad` 在依赖就绪后执行；`OnEnable` 打开事件/定时器闸门，拒绝则保持已加载未启用；
 `OnUnload` 释放插件持有的东西。钩子抛出异常属于故障，宿主会卸载插件。
 
-需要源码编译的 C# / F# 插件时，见对应 Provider 与在线作者文档。
+需要源码编译的插件时，见
+[CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate)、
+[FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate) 与
+[RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)；生命周期与打包见
+在线作者文档。
