@@ -14,7 +14,10 @@ public interface IEventBus
     IDisposable Subscribe<TEvent>(Action<TEvent> handler);
 
     /// <summary>在调用者的线程上同步分发给所有订阅者。</summary>
-    /// <param name="event">要分发的事件。按它的运行时类型匹配订阅者。</param>
+    /// <param name="event">
+    /// 要分发的事件。按调用时指定的 <typeparamref name="TEvent"/> 精确匹配订阅者；
+    /// 用基类发布不会命中按派生类型订阅的 handler。
+    /// </param>
     void Publish<TEvent>(TEvent @event);
 }
 

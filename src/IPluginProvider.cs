@@ -35,7 +35,10 @@ public abstract class PluginInstance(IPlugin plugin)
 }
 
 /// <summary>一次卸载的结果。失败要如实回传，不假装成功（ADR-0004 / ADR-0009）。</summary>
-/// <param name="Released">是否真的回收掉了。注意：失败时插件已经从注册表移除、句柄也已释放，**不可重试**。</param>
+/// <param name="Released">
+/// 是否真的回收掉了。失败可能是未加载、仍有依赖者、停用被拒绝（插件仍在册且可能活跃），
+/// 也可能是已经放下但回收验证没通过（状态 Detached，再调一次卸载会重新验证）。
+/// </param>
 /// <param name="Error">失败原因；成功时为 <see langword="null"/>。</param>
 public readonly record struct UnloadResult(bool Released, string? Error)
 {
