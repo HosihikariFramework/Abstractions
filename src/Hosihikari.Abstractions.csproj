@@ -13,7 +13,8 @@
     <Version>0.7.0</Version>
     <Authors>HosihikariFramework</Authors>
     <Description>Plugin contract for the Hosihikari framework: IPlugin, IPluginContext, IPluginProvider, host services and the plugin manifest.</Description>
-    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <!-- Source is MIT; the 0.7.0 package published before the switch remains LGPL-3.0-or-later. -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/HosihikariFramework/Abstractions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>minecraft;bedrock;bds;plugin;hosihikari</PackageTags>

@@ -77,8 +77,10 @@ public sealed class MyPlugin : IPlugin
 - [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate)
 - [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
-模板脚手架为 MIT-0；契约与本仓其余部分仍为 LGPL-3.0-or-later。
+模板脚手架为 MIT-0；Abstractions 源码为 MIT。切换前已发布到 NuGet 的 0.7.0 包仍为
+LGPL-3.0-or-later；从本源码构建的包为 MIT。
 
 ## 许可
 
-LGPL-3.0-or-later，见 [LICENSE.md](LICENSE.md)。`templates/` 下的插件模板与三个模板仓为 MIT-0。
+Abstractions 源码为 MIT，见 [LICENSE.md](LICENSE.md)。切换前已发布到 NuGet 的 0.7.0 包仍为
+LGPL-3.0-or-later。`templates/` 下的插件模板与三个模板仓为 MIT-0。
