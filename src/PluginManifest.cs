@@ -23,13 +23,24 @@ public sealed class PluginManifest
     public string? Version { get; set; }
 
     /// <summary>依赖的其它插件。加载按拓扑序、卸载按反序（ADR-0004）。</summary>
-    public List<ManifestDependency> Dependencies { get; set; } = [];
+    public List<ManifestDependency> Dependencies
+    {
+        get => _dependencies;
+        set => _dependencies = value ?? [];
+    }
 
     /// <summary>
     /// 框架自己的字段都放这里 —— 清单里留给第三方的扩展位。
     /// 值保持原始 JSON：字符串、数组（例如进程外插件的 <c>command</c>）都放得下。
     /// </summary>
-    public Dictionary<string, JsonElement> ExtraInfo { get; set; } = [];
+    public Dictionary<string, JsonElement> ExtraInfo
+    {
+        get => _extraInfo;
+        set => _extraInfo = value ?? [];
+    }
+
+    private List<ManifestDependency> _dependencies = [];
+    private Dictionary<string, JsonElement> _extraInfo = [];
 
     /// <summary>处理这个包的 Provider（ADR-0002）。不写就是 <c>assembly</c>。</summary>
     [JsonIgnore]
