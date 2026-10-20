@@ -12,7 +12,7 @@ For source-compiled plugins, see
 
 ```bash
 dotnet pack Hosihikari.Plugin.Template.csproj -c Release -o artifacts
-dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.0.nupkg
+dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.2.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
@@ -43,5 +43,5 @@ directory name.
 
 ## Licence
 
-MIT-0, see [LICENSE.md](LICENSE.md). The `Hosihikari.Abstractions` contract the generated project
-references remains LGPL-3.0-or-later.
+MIT-0, see [LICENSE.md](LICENSE.md). The `Hosihikari.Abstractions` 0.7.1 contract the generated
+project references is MIT; the 0.7.0 package remains LGPL-3.0-or-later.

@@ -11,7 +11,7 @@ The framework itself and the other packages live under
 ## Referencing it
 
 ```xml
-<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.0]" ExcludeAssets="runtime" />
+<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
 ```
 
 **`ExcludeAssets="runtime"` is not optional.** The contract lives in the **shared layer** — the
@@ -101,10 +101,10 @@ out-of-process plugins have their own template repositories:
 - [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
 The template scaffolding is MIT-0; the Abstractions source is MIT. The 0.7.0 package published on
-NuGet before the switch remains LGPL-3.0-or-later; builds from this source are MIT.
+NuGet before the switch remains LGPL-3.0-or-later; 0.7.1 and later are MIT.
 
 ## Licence
 
 The Abstractions source is MIT, see [LICENSE.md](LICENSE.md). The 0.7.0 package published on NuGet
-before the switch remains LGPL-3.0-or-later. The plugin templates under `templates/` and the three
-template repositories are MIT-0.
+before the switch remains LGPL-3.0-or-later; 0.7.1 and later are MIT. The plugin templates under
+`templates/` and the three template repositories are MIT-0.

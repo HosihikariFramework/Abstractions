@@ -9,7 +9,7 @@
 ## 引用
 
 ```xml
-<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.0]" ExcludeAssets="runtime" />
+<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
 ```
 
 **`ExcludeAssets="runtime"` 不能省。** 契约驻留在**共享层** —— 宿主已经载入过这一份；插件包里若再带一份，就是同一个类型名下的第二个身份，插件转型会在运行期失败（而且报错点离病因很远）。
@@ -78,9 +78,9 @@ public sealed class MyPlugin : IPlugin
 - [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
 模板脚手架为 MIT-0；Abstractions 源码为 MIT。切换前已发布到 NuGet 的 0.7.0 包仍为
-LGPL-3.0-or-later；从本源码构建的包为 MIT。
+LGPL-3.0-or-later；0.7.1 及之后为 MIT。
 
 ## 许可
 
 Abstractions 源码为 MIT，见 [LICENSE.md](LICENSE.md)。切换前已发布到 NuGet 的 0.7.0 包仍为
-LGPL-3.0-or-later。`templates/` 下的插件模板与三个模板仓为 MIT-0。
+LGPL-3.0-or-later；0.7.1 及之后为 MIT。`templates/` 下的插件模板与三个模板仓为 MIT-0。
