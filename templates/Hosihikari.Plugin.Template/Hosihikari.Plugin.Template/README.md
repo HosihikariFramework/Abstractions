@@ -37,3 +37,8 @@ For source-compiled plugins, see
 [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate), and
 [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate); the online authoring
 guide covers the lifecycle and packaging.
+
+## Licence
+
+The template scaffolding is MIT-0, see [LICENSE.md](LICENSE.md). The framework contract this
+project references remains LGPL-3.0-or-later.

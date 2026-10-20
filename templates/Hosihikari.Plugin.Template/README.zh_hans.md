@@ -34,4 +34,5 @@ bash ./pack.sh
 
 ## 许可
 
+MIT-0，见 [LICENSE.md](LICENSE.md)。生成的项目引用的 `Hosihikari.Abstractions` 契约仍为
 LGPL-3.0-or-later。

@@ -77,6 +77,8 @@ public sealed class MyPlugin : IPlugin
 - [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate)
 - [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
+模板脚手架为 MIT-0；契约与本仓其余部分仍为 LGPL-3.0-or-later。
+
 ## 许可
 
-LGPL-3.0-or-later，见 [LICENSE.md](LICENSE.md)。
+LGPL-3.0-or-later，见 [LICENSE.md](LICENSE.md)。`templates/` 下的插件模板与三个模板仓为 MIT-0。

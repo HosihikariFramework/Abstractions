@@ -33,3 +33,7 @@ bash ./pack.sh
 [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate) 与
 [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)；生命周期与打包见
 在线作者文档。
+
+## 许可
+
+模板脚手架为 MIT-0，见 [LICENSE.md](LICENSE.md)。本项目引用的框架契约仍为 LGPL-3.0-or-later。

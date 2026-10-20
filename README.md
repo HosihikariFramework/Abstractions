@@ -100,6 +100,10 @@ out-of-process plugins have their own template repositories:
 - [FSharpPluginTemplate](https://github.com/HosihikariFramework/FSharpPluginTemplate)
 - [RpcPluginTemplate](https://github.com/HosihikariFramework/RpcPluginTemplate)
 
+The template scaffolding is MIT-0; the contract and the rest of this repository remain
+LGPL-3.0-or-later.
+
 ## Licence
 
-LGPL-3.0-or-later, see [LICENSE.md](LICENSE.md).
+LGPL-3.0-or-later, see [LICENSE.md](LICENSE.md). The plugin templates under `templates/` and the
+three template repositories are MIT-0.

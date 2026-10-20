@@ -34,11 +34,17 @@ jobs:
           Hosihikari.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Template.csproj
           -c Release -o artifacts
 
+      - name: 检查模板包许可
+        run: |
+          set -euo pipefail
+          unzip -p artifacts/*.nupkg Hosihikari.Plugin.Template.nuspec | grep -q 'MIT-0'
+
       - name: 生成并构建插件
         run: |
           set -euo pipefail
-          dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.0.nupkg
+          dotnet new install artifacts/*.nupkg
           dotnet new hosihikari-plugin -n HelloTemplate -o "$RUNNER_TEMP/HelloTemplate"
+          test -f "$RUNNER_TEMP/HelloTemplate/LICENSE.md"
           dotnet build "$RUNNER_TEMP/HelloTemplate/HelloTemplate.csproj" -c Release
 
       - name: 打插件包

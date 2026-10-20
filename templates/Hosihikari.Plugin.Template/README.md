@@ -43,4 +43,5 @@ directory name.
 
 ## Licence
 
-LGPL-3.0-or-later.
+MIT-0, see [LICENSE.md](LICENSE.md). The `Hosihikari.Abstractions` contract the generated project
+references remains LGPL-3.0-or-later.
