@@ -47,6 +47,19 @@ public interface IPluginContext
     void RegisterProvider(IPluginProvider provider);
 
     /// <summary>
+    /// 登记 Provider，并把“同名已被占用”作为返回值交出来。
+    /// 默认实现保持旧行为并返回 <see langword="true"/>；新 Provider 应优先用它，
+    /// 这样重复登记不会在包以为成功时静默落空。
+    /// </summary>
+    /// <param name="provider">要接管的插件类型。</param>
+    /// <returns>登记成功为 <see langword="true"/>；同名已存在为 <see langword="false"/>。</returns>
+    bool TryRegisterProvider(IPluginProvider provider)
+    {
+        RegisterProvider(provider);
+        return true;
+    }
+
+    /// <summary>
     /// 报告一个在钩子之外发生的故障（进程外环境死亡、协议错误等，ADR-0030）。
     /// 宿主按故障处理：卸载该插件，成功后通知载体。进程内 Provider 通常用不到。
     /// </summary>
