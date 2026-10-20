@@ -91,7 +91,8 @@ Provider's business**. `api` and `format_version` must equal `PluginContract.Api
 
 ## Plugin template
 
-This repository also carries the `dotnet new` template for precompiled assembly plugins. See
+This repository also carries the `dotnet new` template for precompiled assembly plugins, published
+as [Hosihikari.Plugin.Template](https://www.nuget.org/packages/Hosihikari.Plugin.Template). See
 [`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template); source C#, F#, and
 out-of-process plugins have their own template repositories:
 

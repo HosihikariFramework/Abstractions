@@ -68,7 +68,8 @@ public sealed class MyPlugin : IPlugin
 
 ## 插件模板
 
-本仓同时携带预编译程序集插件的 `dotnet new` 模板，见
+本仓同时携带预编译程序集插件的 `dotnet new` 模板，发布为
+[Hosihikari.Plugin.Template](https://www.nuget.org/packages/Hosihikari.Plugin.Template)，见
 [`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template)；源码 C#、F# 与
 进程外插件各有独立模板仓：
 
