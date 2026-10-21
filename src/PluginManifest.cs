@@ -70,6 +70,9 @@ public sealed class ManifestDependency
     /// <summary>被依赖的插件名。</summary>
     public string Name { get; set; } = "";
 
-    /// <summary>版本约束。当前不参与解析，留给后续的依赖治理。</summary>
+    /// <summary>
+    /// 版本约束，使用 NuGet 的 SemVer 范围语法，例如 <c>1.2.3</c>（至少 1.2.3）、
+    /// <c>[1.2.3]</c>（精确）或 <c>[1.0.0,2.0.0)</c>。省略、空字符串与 <c>*</c> 表示任意版本。
+    /// </summary>
     public string? Version { get; set; }
 }
