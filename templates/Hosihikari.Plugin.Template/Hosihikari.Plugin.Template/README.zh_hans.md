@@ -36,4 +36,4 @@ bash ./pack.sh
 
 ## 许可
 
-模板脚手架为 MIT-0，见 [LICENSE.md](LICENSE.md)。本项目引用的框架契约（Abstractions 0.7.1）为 MIT。
+模板脚手架为 MIT-0，见 [LICENSE.md](LICENSE.md)。本项目引用的框架契约（Abstractions 1.0.0）为 MIT。

@@ -4,15 +4,15 @@
     <TargetFramework>net10.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>Hosihikari.Plugin.Templates</PackageId>
-    <Version>0.1.2</Version>
-    <PackageVersion>0.1.2</PackageVersion>
+    <Version>1.0.0</Version>
+    <PackageVersion>1.0.0</PackageVersion>
     <Title>Hosihikari plugin templates</Title>
     <Authors>星光</Authors>
     <Description>dotnet new template for a precompiled Hosihikari plugin.</Description>
     <PackageTags>dotnet-new;templates;hosihikari;minecraft;bedrock</PackageTags>
     <PackageLicenseExpression>MIT-0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/HosihikariFramework/Abstractions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/HosihikariFramework/Abstractions.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/HosihikariFramework/PluginAbstractions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HosihikariFramework/PluginAbstractions.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeContentInPack>true</IncludeContentInPack>

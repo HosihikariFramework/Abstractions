@@ -6,7 +6,7 @@
 
 ```bash
 dotnet pack Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
-dotnet new install artifacts/Hosihikari.Plugin.Templates.0.1.2.nupkg
+dotnet new install artifacts/Hosihikari.Plugin.Templates.1.0.0.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
@@ -34,5 +34,5 @@ bash ./pack.sh
 
 ## 许可
 
-MIT-0，见 [LICENSE.md](LICENSE.md)。生成的项目引用的 `Hosihikari.Plugin.Abstractions` 0.7.1 契约为
+MIT-0，见 [LICENSE.md](LICENSE.md)。生成的项目引用的 `Hosihikari.Plugin.Abstractions` 1.0.0 契约为
 MIT；0.7.0 包仍为 LGPL-3.0-or-later。

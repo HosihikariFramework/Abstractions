@@ -16,7 +16,7 @@ jobs:
       # 打包器在核心仓；fork 让核心按源码编。
       - uses: actions/checkout@v7
         with:
-          repository: HosihikariFramework/PluginManagement
+          repository: HosihikariFramework/PluginManager
           path: Hosihikari.PluginManager
 
       - uses: actions/checkout@v7

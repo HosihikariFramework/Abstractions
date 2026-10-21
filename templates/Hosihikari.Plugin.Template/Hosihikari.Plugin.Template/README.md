@@ -41,4 +41,4 @@ guide covers the lifecycle and packaging.
 ## Licence
 
 The template scaffolding is MIT-0, see [LICENSE.md](LICENSE.md). The framework contract this
-project references (Abstractions 0.7.1) is MIT.
+project references (Abstractions 1.0.0) is MIT.
