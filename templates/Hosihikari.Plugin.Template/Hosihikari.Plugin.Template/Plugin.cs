@@ -1,11 +1,11 @@
 using Hosihikari;
 using Microsoft.Extensions.Logging;
 
-[assembly: EntryPoint<Hosihikari.Plugin.Template.Plugin>]
+[assembly: EntryPoint<Hosihikari.Plugin.Templates.Plugin>]
 
-namespace Hosihikari.Plugin.Template;
+namespace Hosihikari.Plugin.Templates;
 
-/// <summary>A precompiled plugin loaded by the core's built-in assembly provider.</summary>
+/// <summary>A precompiled plugin loaded by the core's built-in assembly loader.</summary>
 public sealed class Plugin : IPlugin
 {
     public void OnLoad(IPluginContext context)

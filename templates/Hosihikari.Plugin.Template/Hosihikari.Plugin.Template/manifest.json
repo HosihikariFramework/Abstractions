@@ -1,14 +1,14 @@
 {
-  "name": "Hosihikari.Plugin.Template",
-  "entry": "Hosihikari.Plugin.Template.dll",
+  "name": "Hosihikari.Plugin.Templates",
+  "entry": "Hosihikari.Plugin.Templates.dll",
   "type": "hosihikari",
   "version": "1.0.0",
   "dependencies": [
     { "name": "hosihikari" }
   ],
   "extraInfo": {
-    "api": "2",
-    "format_version": "1",
-    "provider": "assembly"
+    "api_version": "2",
+    "manifest_version": "1",
+    "loader": "assembly"
   }
 }

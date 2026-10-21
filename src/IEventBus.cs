@@ -22,7 +22,7 @@ public interface IEventBus
 }
 
 /// <summary>
-/// 调度器（ADR-0007）。<c>RunLater</c> / <c>RunEvery</c> 跑在线程池上；
+/// 调度器（ADR-0007）。<c>ScheduleOnce</c> / <c>SchedulePeriodic</c> 跑在线程池上；
 /// "在游戏主线程上跑"是载体能力，自持态拿不到（ADR-0013 / ADR-0019）。
 /// </summary>
 public interface IScheduler
@@ -31,11 +31,11 @@ public interface IScheduler
     /// <param name="delay">延迟时长。</param>
     /// <param name="work">到点后在线程池上执行；抛出会被捕获并上报。</param>
     /// <returns>取消句柄。任务已开始或已结束时释放无副作用。</returns>
-    IDisposable RunLater(TimeSpan delay, Action work);
+    IDisposable ScheduleOnce(TimeSpan delay, Action work);
 
     /// <summary>按间隔重复。</summary>
     /// <param name="interval">相邻两次的间隔。</param>
     /// <param name="work">每次在线程池上执行；抛出会被捕获并上报，不影响后续次数。</param>
     /// <returns>取消句柄。释放之后不再有新的调用，见实现说明的取消语义。</returns>
-    IDisposable RunEvery(TimeSpan interval, Action work);
+    IDisposable SchedulePeriodic(TimeSpan interval, Action work);
 }

@@ -1,6 +1,6 @@
-# Hosihikari.Plugin.Template
+# Hosihikari.Plugin.Templates
 
-A precompiled Hosihikari plugin. The core's built-in assembly provider loads it; no provider
+A precompiled Hosihikari plugin. The core's built-in assembly loader loads it; no loader
 package is required.
 
 ## Build and pack
@@ -16,9 +16,9 @@ pwsh ./pack.ps1
 bash ./pack.sh
 ```
 
-The packer strips the shared layer and writes `dist/Hosihikari.Plugin.Template/` with the plugin
+The packer strips the shared layer and writes `dist/Hosihikari.Plugin.Templates/` with the plugin
 DLL, its private dependencies, and `manifest.json`. Copy that directory to
-`<server>/plugins/Hosihikari.Plugin.Template/`.
+`<server>/plugins/Hosihikari.Plugin.Templates/`.
 
 ## Naming
 

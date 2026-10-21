@@ -12,12 +12,14 @@ public sealed class PluginManifest
     public string Name { get; set; } = "";
 
     /// <summary>包内入口文件的相对路径。</summary>
-    public string Entry { get; set; } = "";
+    [JsonPropertyName("entry")]
+    public string EntryPath { get; set; } = "";
 
     /// <summary>
-    /// 父级的路由键，恒为 <see cref="PluginContract.ShimModName"/> —— 父级靠它把包交给我们（ADR-0006）。
+    /// 父级的路由键，恒为 <see cref="PluginContractInfo.ParentName"/> —— 父级靠它把包交给我们（ADR-0006）。
     /// </summary>
-    public string Type { get; set; } = "";
+    [JsonPropertyName("type")]
+    public string ParentName { get; set; } = "";
 
     /// <summary>插件自身版本。</summary>
     public string? Version { get; set; }
@@ -32,6 +34,7 @@ public sealed class PluginManifest
     /// <summary>
     /// 框架自己的字段都放这里 —— 清单里留给第三方的扩展位。
     /// 值保持原始 JSON：字符串、数组（例如进程外插件的 <c>command</c>）都放得下。
+    /// 数组值只在自持态成立；父级 LeviLamina 的 extraInfo 是 string → string，数组必须在清单里编码成字符串。
     /// </summary>
     public Dictionary<string, JsonElement> ExtraInfo
     {
@@ -42,24 +45,24 @@ public sealed class PluginManifest
     private List<ManifestDependency> _dependencies = [];
     private Dictionary<string, JsonElement> _extraInfo = [];
 
-    /// <summary>处理这个包的 Provider（ADR-0002）。不写就是 <c>assembly</c>。</summary>
+    /// <summary>处理这个包的加载器 id（ADR-0002）。不写就是 <c>assembly</c>。</summary>
     [JsonIgnore]
-    public string Provider =>
-        ExtraInfo.TryGetValue("provider", out var value) && value.ValueKind == JsonValueKind.String
+    public string Loader =>
+        ExtraInfo.TryGetValue("loader", out var value) && value.ValueKind == JsonValueKind.String
             ? value.GetString() ?? "assembly"
             : "assembly";
 
-    /// <summary>插件依赖的契约主版本（ADR-0012）。</summary>
+    /// <summary>插件依赖的契约主版本（ADR-0012）；线上字段是 <c>extraInfo.api_version</c>。</summary>
     [JsonIgnore]
-    public string? Api =>
-        ExtraInfo.TryGetValue("api", out var value) && value.ValueKind == JsonValueKind.String
+    public string? ApiVersion =>
+        ExtraInfo.TryGetValue("api_version", out var value) && value.ValueKind == JsonValueKind.String
             ? value.GetString()
             : null;
 
-    /// <summary>清单 schema 版本（ADR-0012）。</summary>
+    /// <summary>清单 schema 版本（ADR-0012）；线上字段是 <c>extraInfo.manifest_version</c>。</summary>
     [JsonIgnore]
-    public string? FormatVersion =>
-        ExtraInfo.TryGetValue("format_version", out var value) && value.ValueKind == JsonValueKind.String
+    public string? ManifestVersion =>
+        ExtraInfo.TryGetValue("manifest_version", out var value) && value.ValueKind == JsonValueKind.String
             ? value.GetString()
             : null;
 }
@@ -74,5 +77,6 @@ public sealed class ManifestDependency
     /// 版本约束，使用 NuGet 的 SemVer 范围语法，例如 <c>1.2.3</c>（至少 1.2.3）、
     /// <c>[1.2.3]</c>（精确）或 <c>[1.0.0,2.0.0)</c>。省略、空字符串与 <c>*</c> 表示任意版本。
     /// </summary>
-    public string? Version { get; set; }
+    [JsonPropertyName("version")]
+    public string? VersionRange { get; set; }
 }

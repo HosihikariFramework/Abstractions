@@ -1,8 +1,8 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/Hosihikari.Abstractions.csproj" />
+    <Project Path="src/Hosihikari.Plugin.Abstractions.csproj" />
   </Folder>
   <Folder Name="/templates/">
-    <Project Path="templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Template.csproj" />
+    <Project Path="templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj" />
   </Folder>
 </Solution>

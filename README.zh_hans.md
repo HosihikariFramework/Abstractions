@@ -1,4 +1,4 @@
-# Hosihikari.Abstractions
+# Hosihikari.Plugin.Abstractions
 
 [English](README.md) | [简体中文](README.zh_hans.md)
 
@@ -9,7 +9,7 @@
 ## 引用
 
 ```xml
-<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
+<PackageReference Include="Hosihikari.Plugin.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
 ```
 
 **`ExcludeAssets="runtime"` 不能省。** 契约驻留在**共享层** —— 宿主已经载入过这一份；插件包里若再带一份，就是同一个类型名下的第二个身份，插件转型会在运行期失败（而且报错点离病因很远）。
@@ -48,14 +48,14 @@ public sealed class MyPlugin : IPlugin
   "version": "1.0.0",
   "dependencies": [{ "name": "hosihikari" }],
   "extraInfo": {
-    "api": "2",
-    "format_version": "1",
-    "provider": "assembly"
+    "api_version": "2",
+    "manifest_version": "1",
+    "loader": "assembly"
   }
 }
 ```
 
-`type` 是父级加载器的路由键，恒为 `hosihikari`；`extraInfo.provider` 决定由哪个 Provider 处理 —— **怎么从包里找到入口，是那个 Provider 自己的事**。`api` 与 `format_version` 必须分别等于 `PluginContract.ApiVersion` 与 `PluginContract.FormatVersion`；`entry` 必须是包内相对路径。不满足的包在**载入之前**就会被剔除并给出可读报告。
+`type` 是父级加载器的路由键，恒为 `hosihikari`；`extraInfo.loader` 决定由哪个加载器处理 —— **怎么从包里找到入口，是那个加载器自己的事**。`api_version` 与 `manifest_version` 必须分别等于 `PluginContractInfo.CurrentApiVersion` 与 `PluginContractInfo.CurrentManifestVersion`；`entry` 必须是包内相对路径。不满足的包在**载入之前**就会被剔除并给出可读报告。
 
 ## 作者要知道的几条
 
@@ -69,8 +69,8 @@ public sealed class MyPlugin : IPlugin
 ## 插件模板
 
 本仓同时携带预编译程序集插件的 `dotnet new` 模板，发布为
-[Hosihikari.Plugin.Template](https://www.nuget.org/packages/Hosihikari.Plugin.Template)，见
-[`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template)；源码 C#、F# 与
+[Hosihikari.Plugin.Templates](https://www.nuget.org/packages/Hosihikari.Plugin.Templates)，见
+[`templates/Hosihikari.Plugin.Templates`](templates/Hosihikari.Plugin.Templates)；源码 C#、F# 与
 进程外插件各有独立模板仓：
 
 - [CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate)

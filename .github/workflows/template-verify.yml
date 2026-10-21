@@ -32,19 +32,19 @@ jobs:
       - name: 打包契约与模板
         run: |
           set -euo pipefail
-          dotnet pack Hosihikari.Abstractions/src/Hosihikari.Abstractions.csproj -c Release -o artifacts
-          dotnet pack Hosihikari.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Template.csproj -c Release -o artifacts
+          dotnet pack Hosihikari.Abstractions/src/Hosihikari.Plugin.Abstractions.csproj -c Release -o artifacts
+          dotnet pack Hosihikari.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
           dotnet nuget add source "$PWD/artifacts" -n local
 
       - name: 检查模板包许可
         run: |
           set -euo pipefail
-          unzip -p artifacts/Hosihikari.Plugin.Template.*.nupkg Hosihikari.Plugin.Template.nuspec | grep -q 'MIT-0'
+          unzip -p artifacts/Hosihikari.Plugin.Templates.*.nupkg Hosihikari.Plugin.Templates.nuspec | grep -q 'MIT-0'
 
       - name: 生成并构建插件
         run: |
           set -euo pipefail
-          dotnet new install artifacts/Hosihikari.Plugin.Template.*.nupkg
+          dotnet new install artifacts/Hosihikari.Plugin.Templates.*.nupkg
           dotnet new hosihikari-plugin -n HelloTemplate -o "$RUNNER_TEMP/HelloTemplate"
           test -f "$RUNNER_TEMP/HelloTemplate/LICENSE.md"
           dotnet build "$RUNNER_TEMP/HelloTemplate/HelloTemplate.csproj" -c Release
@@ -58,11 +58,11 @@ jobs:
           bash ./pack.sh
           test -f dist/HelloTemplate/HelloTemplate.dll
           test -f dist/HelloTemplate/manifest.json
-          if find dist/HelloTemplate -name 'Hosihikari.Abstractions.dll' | grep -q .; then
+          if find dist/HelloTemplate -name 'Hosihikari.Plugin.Abstractions.dll' | grep -q .; then
             echo 'the shared contract leaked into the plugin package' >&2
             exit 1
           fi
 
       - name: 清理模板
         if: always()
-        run: dotnet new uninstall Hosihikari.Plugin.Template || true
+        run: dotnet new uninstall Hosihikari.Plugin.Templates || true

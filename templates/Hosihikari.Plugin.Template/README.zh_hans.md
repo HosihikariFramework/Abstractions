@@ -1,12 +1,12 @@
-# Hosihikari.Plugin.Template
+# Hosihikari.Plugin.Templates
 
 预编译星光框架插件的 `dotnet new` 模板。生成的是一个 .NET 类库，带 `EntryPoint<T>`、清单，以及调用框架打包器的打包脚本。
 
 ## 构建并试用
 
 ```bash
-dotnet pack Hosihikari.Plugin.Template.csproj -c Release -o artifacts
-dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.2.nupkg
+dotnet pack Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
+dotnet new install artifacts/Hosihikari.Plugin.Templates.0.1.2.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
@@ -21,10 +21,10 @@ bash ./pack.sh
 
 ## 模板内容
 
-- `Hosihikari.Plugin.Template.csproj` —— net10.0 类库，引用契约时 `ExcludeAssets="runtime"`，共享层不会进包。
+- `Hosihikari.Plugin.Templates.csproj` —— net10.0 类库，引用契约时 `ExcludeAssets="runtime"`，共享层不会进包。
 - `Plugin.cs` —— `IPlugin` 实现与 `EntryPoint<T>`。
-- `manifest.json` —— `provider: assembly`，即核心内置路径。
-- `pack.ps1` / `pack.sh` —— 构建后调用核心打包器的 `pack-plugin`，按规范剔除共享层。
+- `manifest.json` —— `loader: assembly`，即插件管理者内置路径。
+- `pack.ps1` / `pack.sh` —— 构建后调用插件管理者打包器的 `pack-plugin`，按规范剔除共享层。
 - 双语插件 README。
 
 ## 命名约束
@@ -34,5 +34,5 @@ bash ./pack.sh
 
 ## 许可
 
-MIT-0，见 [LICENSE.md](LICENSE.md)。生成的项目引用的 `Hosihikari.Abstractions` 0.7.1 契约为
+MIT-0，见 [LICENSE.md](LICENSE.md)。生成的项目引用的 `Hosihikari.Plugin.Abstractions` 0.7.1 契约为
 MIT；0.7.0 包仍为 LGPL-3.0-or-later。

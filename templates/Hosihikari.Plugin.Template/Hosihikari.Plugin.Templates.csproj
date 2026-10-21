@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <PackageType>Template</PackageType>
-    <PackageId>Hosihikari.Plugin.Template</PackageId>
+    <PackageId>Hosihikari.Plugin.Templates</PackageId>
     <Version>0.1.2</Version>
     <PackageVersion>0.1.2</PackageVersion>
-    <Title>Hosihikari plugin template</Title>
+    <Title>Hosihikari plugin templates</Title>
     <Authors>星光</Authors>
     <Description>dotnet new template for a precompiled Hosihikari plugin.</Description>
     <PackageTags>dotnet-new;templates;hosihikari;minecraft;bedrock</PackageTags>

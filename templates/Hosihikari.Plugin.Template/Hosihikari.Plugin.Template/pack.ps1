@@ -10,7 +10,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $here = $PSScriptRoot
-$name = 'Hosihikari.Plugin.Template'
+$name = 'Hosihikari.Plugin.Templates'
 
 & dotnet build (Join-Path $here "$name.csproj") -c Release --nologo
 if ($LASTEXITCODE -ne 0) { throw 'the plugin failed to build' }

@@ -2,13 +2,13 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "星光",
   "classifications": ["Hosihikari", "Plugin"],
-  "identity": "Hosihikari.Plugin.Template",
+  "identity": "Hosihikari.Plugin.Templates",
   "name": "Hosihikari plugin",
   "shortName": "hosihikari-plugin",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Hosihikari.Plugin.Template",
+  "sourceName": "Hosihikari.Plugin.Templates",
   "preferNameDirectory": true
 }

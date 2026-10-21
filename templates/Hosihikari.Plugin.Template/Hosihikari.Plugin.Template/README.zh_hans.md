@@ -1,6 +1,6 @@
-# Hosihikari.Plugin.Template
+# Hosihikari.Plugin.Templates
 
-一个预编译的星光框架插件。核心内置的程序集 Provider 直接装载它，不需要额外的 Provider 包。
+一个预编译的星光框架插件。插件管理者内置的程序集加载器直接装载它，不需要额外的加载器包。
 
 ## 构建与打包
 
@@ -15,8 +15,8 @@ pwsh ./pack.ps1
 bash ./pack.sh
 ```
 
-打包器会剔除共享层，在 `dist/Hosihikari.Plugin.Template/` 产出插件 DLL、私有依赖与
-`manifest.json`。把这个目录复制到 `<服务端>/plugins/Hosihikari.Plugin.Template/`。
+打包器会剔除共享层，在 `dist/Hosihikari.Plugin.Templates/` 产出插件 DLL、私有依赖与
+`manifest.json`。把这个目录复制到 `<服务端>/plugins/Hosihikari.Plugin.Templates/`。
 
 ## 命名
 

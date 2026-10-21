@@ -1,7 +1,7 @@
 namespace Hosihikari;
 
 /// <summary>
-/// 入口声明的运行期句柄。Provider 用它在载入之后构造插件实例 —— 泛型约束由编译器保证，
+/// 入口声明的运行期句柄。加载器用它在载入之后构造插件实例 —— 泛型约束由编译器保证，
 /// 这里只负责把它变成一个可调用的入口。
 /// </summary>
 public abstract class EntryPointAttributeBase : Attribute

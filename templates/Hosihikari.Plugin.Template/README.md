@@ -1,4 +1,4 @@
-# Hosihikari.Plugin.Template
+# Hosihikari.Plugin.Templates
 
 A `dotnet new` template for a precompiled Hosihikari plugin. The generated project is a .NET class
 library with an `EntryPoint<T>`, a manifest, and pack scripts that use the framework's packer.
@@ -11,8 +11,8 @@ For source-compiled plugins, see
 ## Build and try it
 
 ```bash
-dotnet pack Hosihikari.Plugin.Template.csproj -c Release -o artifacts
-dotnet new install artifacts/Hosihikari.Plugin.Template.0.1.2.nupkg
+dotnet pack Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
+dotnet new install artifacts/Hosihikari.Plugin.Templates.0.1.2.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
@@ -27,10 +27,10 @@ The result is `dist/MyPlugin/`; copy it to `<server>/plugins/MyPlugin/`.
 
 ## Template contents
 
-- `Hosihikari.Plugin.Template.csproj` — net10.0 class library referencing the contract with
+- `Hosihikari.Plugin.Templates.csproj` — net10.0 class library referencing the contract with
   `ExcludeAssets="runtime"`; the shared layer stays out of the package.
 - `Plugin.cs` — `IPlugin` implementation and `EntryPoint<T>`.
-- `manifest.json` — `provider: assembly`, the core built-in path.
+- `manifest.json` — `loader: assembly`, the core built-in path.
 - `pack.ps1` / `pack.sh` — build, then call the core packer's `pack-plugin` command, which strips
   the canonical shared layer.
 - Bilingual plugin README.
@@ -43,5 +43,5 @@ directory name.
 
 ## Licence
 
-MIT-0, see [LICENSE.md](LICENSE.md). The `Hosihikari.Abstractions` 0.7.1 contract the generated
+MIT-0, see [LICENSE.md](LICENSE.md). The `Hosihikari.Plugin.Abstractions` 0.7.1 contract the generated
 project references is MIT; the 0.7.0 package remains LGPL-3.0-or-later.

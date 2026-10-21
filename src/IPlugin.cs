@@ -1,19 +1,19 @@
 namespace Hosihikari;
 
-/// <summary>契约自身的版本（ADR-0012）。清单 <c>extraInfo.api</c> 必须等于它，否则拒载。</summary>
-public static class PluginContract
+/// <summary>契约自身的版本（ADR-0012）。清单 <c>extraInfo.api_version</c> 必须等于它，否则拒载。</summary>
+public static class PluginContractInfo
 {
-    /// <summary>当前的契约主版本。清单里的 <c>api</c> 与它不匹配的包在载入之前就会被剔除。</summary>
-    public const string ApiVersion = "2";
+    /// <summary>当前的契约主版本。清单里的 <c>api_version</c> 与它不匹配的包在载入之前就会被剔除。</summary>
+    public const string CurrentApiVersion = "2";
 
-    /// <summary>当前的清单 schema 版本。清单里的 <c>format_version</c> 与它不匹配的包同样在载入之前被剔除。</summary>
-    public const string FormatVersion = "1";
+    /// <summary>当前的清单 schema 版本。清单里的 <c>manifest_version</c> 与它不匹配的包同样在载入之前被剔除。</summary>
+    public const string CurrentManifestVersion = "1";
 
     /// <summary>
-    /// Shim 作为父级插件的名字，也是清单里 <c>type</c> 该写的值（ADR-0006）。
+    /// 父级路由键的取值，也是清单顶层 <c>type</c> 该写的值（ADR-0006）。
     /// 它是父级命名空间里的一等名字：插件靠 <c>dependencies</c> 声明对它的依赖来保证排序。
     /// </summary>
-    public const string ShimModName = "hosihikari";
+    public const string ParentName = "hosihikari";
 }
 
 /// <summary>

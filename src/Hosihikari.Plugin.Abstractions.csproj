@@ -5,14 +5,14 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Hosihikari</RootNamespace>
-    <AssemblyName>Hosihikari.Abstractions</AssemblyName>
+    <AssemblyName>Hosihikari.Plugin.Abstractions</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Hosihikari.Abstractions</PackageId>
+    <PackageId>Hosihikari.Plugin.Abstractions</PackageId>
     <Version>0.7.1</Version>
     <Authors>HosihikariFramework</Authors>
-    <Description>Plugin contract for the Hosihikari framework: IPlugin, IPluginContext, IPluginProvider, host services and the plugin manifest.</Description>
+    <Description>Plugin contract for the Hosihikari framework: IPlugin, IPluginContext, IPluginLoader, host services and the plugin manifest.</Description>
     <!-- 0.7.0 was published under LGPL; 0.7.1 and later are MIT. -->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/HosihikariFramework/Abstractions</RepositoryUrl>

@@ -1,4 +1,4 @@
-# Hosihikari.Abstractions
+# Hosihikari.Plugin.Abstractions
 
 [English](README.md) | [简体中文](README.zh_hans.md)
 
@@ -11,7 +11,7 @@ The framework itself and the other packages live under
 ## Referencing it
 
 ```xml
-<PackageReference Include="Hosihikari.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
+<PackageReference Include="Hosihikari.Plugin.Abstractions" Version="[0.7.1]" ExcludeAssets="runtime" />
 ```
 
 **`ExcludeAssets="runtime"` is not optional.** The contract lives in the **shared layer** — the
@@ -56,17 +56,17 @@ A plugin package is a directory; the directory name is the plugin name, and it m
   "version": "1.0.0",
   "dependencies": [{ "name": "hosihikari" }],
   "extraInfo": {
-    "api": "2",
-    "format_version": "1",
-    "provider": "assembly"
+    "api_version": "2",
+    "manifest_version": "1",
+    "loader": "assembly"
   }
 }
 ```
 
-`type` is the parent loader's routing key and is always `hosihikari`. `extraInfo.provider` picks
-the Provider that handles the package — **how to find the entry point inside the package is that
-Provider's business**. `api` and `format_version` must equal `PluginContract.ApiVersion` and
-`PluginContract.FormatVersion`; `entry` must stay inside the package. A violation is rejected
+`type` is the parent loader's routing key and is always `hosihikari`. `extraInfo.loader` picks
+the Loader that handles the package — **how to find the entry point inside the package is that
+Loader's business**. `api_version` and `manifest_version` must equal `PluginContractInfo.CurrentApiVersion` and
+`PluginContractInfo.CurrentManifestVersion`; `entry` must stay inside the package. A violation is rejected
 **before** anything is loaded, with a readable report.
 
 ## Things an author should know
@@ -92,8 +92,8 @@ Provider's business**. `api` and `format_version` must equal `PluginContract.Api
 ## Plugin template
 
 This repository also carries the `dotnet new` template for precompiled assembly plugins, published
-as [Hosihikari.Plugin.Template](https://www.nuget.org/packages/Hosihikari.Plugin.Template). See
-[`templates/Hosihikari.Plugin.Template`](templates/Hosihikari.Plugin.Template); source C#, F#, and
+as [Hosihikari.Plugin.Templates](https://www.nuget.org/packages/Hosihikari.Plugin.Templates). See
+[`templates/Hosihikari.Plugin.Templates`](templates/Hosihikari.Plugin.Templates); source C#, F#, and
 out-of-process plugins have their own template repositories:
 
 - [CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate)

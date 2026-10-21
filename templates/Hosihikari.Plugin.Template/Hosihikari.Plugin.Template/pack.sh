@@ -6,7 +6,7 @@
 set -euo pipefail
 
 here=$(cd "$(dirname "$0")" && pwd)
-name='Hosihikari.Plugin.Template'
+name='Hosihikari.Plugin.Templates'
 root=${1:-dist}
 case "$root" in
     /*) ;;
