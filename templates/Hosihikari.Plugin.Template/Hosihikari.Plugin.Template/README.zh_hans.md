@@ -4,7 +4,7 @@
 
 ## 构建与打包
 
-需要 .NET 10 SDK，以及并列的 `Hosihikari.PluginManager` checkout（或设置
+需要 .NET 10 SDK，以及并列的 `PluginManager` checkout（或设置
 `HOSIHIKARI_PLUGINMANAGER`）。
 
 ```powershell

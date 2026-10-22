@@ -10,7 +10,7 @@ dotnet new install artifacts/Hosihikari.Plugin.Templates.1.0.0.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
-然后在并列的 `Hosihikari.PluginManager` checkout 下构建并打包：
+然后在并列的 `PluginManager` checkout 下构建并打包：
 
 ```bash
 cd MyPlugin

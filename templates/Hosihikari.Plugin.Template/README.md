@@ -16,7 +16,7 @@ dotnet new install artifacts/Hosihikari.Plugin.Templates.1.0.0.nupkg
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
 ```
 
-Then build and pack the generated plugin with a sibling `Hosihikari.PluginManager` checkout:
+Then build and pack the generated plugin with a sibling `PluginManager` checkout:
 
 ```bash
 cd MyPlugin

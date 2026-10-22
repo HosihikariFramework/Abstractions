@@ -11,18 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          path: Hosihikari.Abstractions
+          path: Plugin.Abstractions
 
       # 打包器在核心仓；fork 让核心按源码编。
       - uses: actions/checkout@v7
         with:
           repository: HosihikariFramework/PluginManager
-          path: Hosihikari.PluginManager
+          path: PluginManager
 
       - uses: actions/checkout@v7
         with:
           repository: HosihikariFramework/Hosihikari.McMaster.NETCore.Plugins
-          path: Hosihikari.McMaster.NETCore.Plugins
+          path: McMaster.NETCore.Plugins
 
       - uses: actions/setup-dotnet@v6
         with:
@@ -32,8 +32,8 @@ jobs:
       - name: 打包契约与模板
         run: |
           set -euo pipefail
-          dotnet pack Hosihikari.Abstractions/src/Hosihikari.Plugin.Abstractions.csproj -c Release -o artifacts
-          dotnet pack Hosihikari.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
+          dotnet pack Plugin.Abstractions/src/Hosihikari.Plugin.Abstractions.csproj -c Release -o artifacts
+          dotnet pack Plugin.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
           dotnet nuget add source "$PWD/artifacts" -n local
 
       - name: 检查模板包许可
@@ -51,7 +51,7 @@ jobs:
 
       - name: 打插件包
         env:
-          HOSIHIKARI_PLUGINMANAGER: ${{ github.workspace }}/Hosihikari.PluginManager
+          HOSIHIKARI_PLUGINMANAGER: ${{ github.workspace }}/PluginManager
         run: |
           set -euo pipefail
           cd "$RUNNER_TEMP/HelloTemplate"

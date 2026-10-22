@@ -5,7 +5,7 @@ package is required.
 
 ## Build and pack
 
-Requires the .NET 10 SDK and a sibling `Hosihikari.PluginManager` checkout (or
+Requires the .NET 10 SDK and a sibling `PluginManager` checkout (or
 `HOSIHIKARI_PLUGINMANAGER` pointing at one).
 
 ```powershell

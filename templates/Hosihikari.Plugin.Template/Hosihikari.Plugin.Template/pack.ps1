@@ -1,7 +1,7 @@
 <#
     Build the plugin and assemble a package with the framework's packer.
 
-    Requires a sibling Hosihikari.PluginManager checkout, or HOSIHIKARI_PLUGINMANAGER.
+    Requires a sibling PluginManager checkout, or HOSIHIKARI_PLUGINMANAGER.
     Usage: pwsh ./pack.ps1 [-OutputRoot dist]
 #>
 param(
@@ -21,7 +21,7 @@ $root = if ([IO.Path]::IsPathRooted($OutputRoot)) { $OutputRoot } else { Join-Pa
 $core = if ($env:HOSIHIKARI_PLUGINMANAGER) {
     $env:HOSIHIKARI_PLUGINMANAGER
 } else {
-    Join-Path (Split-Path $here -Parent) 'Hosihikari.PluginManager'
+    Join-Path (Split-Path $here -Parent) 'PluginManager'
 }
 $packTool = Join-Path $core 'tools/Pack/Hosihikari.Plugin.Pack.csproj'
 if (-not (Test-Path $packTool)) {
