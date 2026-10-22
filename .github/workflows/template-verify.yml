@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           dotnet pack Plugin.Abstractions/src/Hosihikari.Plugin.Abstractions.csproj -c Release -o artifacts
-          dotnet pack Plugin.Abstractions/templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
+          dotnet pack Plugin.Abstractions/templates/Hosihikari.Plugin.Templates/Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
           dotnet nuget add source "$PWD/artifacts" -n local
 
       - name: 检查模板包许可

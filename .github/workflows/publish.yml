@@ -60,13 +60,13 @@ jobs:
         shell: pwsh
         run: |
           $tag = '${{ github.ref_name }}' -replace '^template-v', ''
-          $version = dotnet msbuild templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj -getProperty:PackageVersion
+          $version = dotnet msbuild templates/Hosihikari.Plugin.Templates/Hosihikari.Plugin.Templates.csproj -getProperty:PackageVersion
           if ($version -ne $tag) { throw "PackageVersion 是 $version，标签是 $tag" }
 
       - name: 打包
         run: >
           dotnet pack
-          templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj
+          templates/Hosihikari.Plugin.Templates/Hosihikari.Plugin.Templates.csproj
           -c Release -o out
 
       # 换来的 key 只有一小时有效期、且一个令牌只能换一把，所以这一步紧贴推送。
