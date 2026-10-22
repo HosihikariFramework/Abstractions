@@ -1,7 +1,11 @@
 # Hosihikari.Plugin.Templates
 
-A `dotnet new` template for a precompiled Hosihikari plugin. The generated project is a .NET class
-library with an `EntryPoint<T>`, a manifest, and pack scripts that use the framework's packer.
+`dotnet new` templates for precompiled Hosihikari plugins. Both templates generate a .NET class
+library with a manifest and pack scripts that use the framework's packer.
+
+- **C#** — short name `hosihikari-plugin`; entry declared with `EntryPoint<T>`.
+- **F#** — short name `hosihikari-plugin-fsharp`; F# cannot apply the generic attribute, so the
+  generated project declares the same `EntryPointAttributeBase` through a non-generic attribute.
 
 For source-compiled plugins, see
 [CSharpPluginTemplate](https://github.com/HosihikariFramework/CSharpPluginTemplate),
@@ -12,34 +16,47 @@ For source-compiled plugins, see
 
 ```bash
 dotnet pack Hosihikari.Plugin.Templates.csproj -c Release -o artifacts
-dotnet new install artifacts/Hosihikari.Plugin.Templates.1.0.0.nupkg
+dotnet new install artifacts/Hosihikari.Plugin.Templates.1.0.1.nupkg
+
 dotnet new hosihikari-plugin -n MyPlugin -o MyPlugin
+dotnet new hosihikari-plugin-fsharp -n MyFSharpPlugin -o MyFSharpPlugin
 ```
 
-Then build and pack the generated plugin with a sibling `PluginManager` checkout:
+Then build and pack each generated plugin with a sibling `PluginManager` checkout:
 
 ```bash
 cd MyPlugin
 bash ./pack.sh
+
+cd ../MyFSharpPlugin
+bash ./pack.sh
 ```
 
-The result is `dist/MyPlugin/`; copy it to `<server>/plugins/MyPlugin/`.
+The results are `dist/MyPlugin/` and `dist/MyFSharpPlugin/`; copy each directory to
+`<server>/plugins/<name>/`.
 
 ## Template contents
+
+C# (`Hosihikari.Plugin.Templates/`):
 
 - `Hosihikari.Plugin.Templates.csproj` — net10.0 class library referencing the contract with
   `ExcludeAssets="runtime"`; the shared layer stays out of the package.
 - `Plugin.cs` — `IPlugin` implementation and `EntryPoint<T>`.
-- `manifest.json` — `loader: assembly`, the core built-in path.
-- `pack.ps1` / `pack.sh` — build, then call the core packer's `pack-plugin` command, which strips
-  the canonical shared layer.
-- Bilingual plugin README.
+
+F# (`Hosihikari.Plugin.Templates.FSharp/`):
+
+- `Hosihikari.Plugin.Templates.FSharp.fsproj` — net10.0 F# library with the same contract reference.
+- `Plugin.fs` — `IPlugin` implementation and a non-generic entry attribute.
+
+Both templates also contain `manifest.json` (`loader: assembly`), `pack.ps1` / `pack.sh` (build,
+then call the core packer's `pack-plugin` command), and a bilingual plugin README. The F# template
+copies `FSharp.Core.dll` into the plugin package because the core shared layer does not contain it.
 
 ## Name constraints
 
 The project name becomes the assembly name, namespace, and manifest name. Use letters, digits, and
-dots; spaces and hyphens are not valid C# identifiers. The manifest name must equal the package
-directory name.
+dots; spaces and hyphens are not valid C# or F# identifiers. The manifest name must equal the
+package directory name.
 
 ## Licence
 

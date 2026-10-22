@@ -46,8 +46,11 @@ jobs:
           set -euo pipefail
           dotnet new install artifacts/Hosihikari.Plugin.Templates.*.nupkg
           dotnet new hosihikari-plugin -n HelloTemplate -o "$RUNNER_TEMP/HelloTemplate"
+          dotnet new hosihikari-plugin-fsharp -n HelloFSharp -o "$RUNNER_TEMP/HelloFSharp"
           test -f "$RUNNER_TEMP/HelloTemplate/LICENSE.md"
+          test -f "$RUNNER_TEMP/HelloFSharp/LICENSE.md"
           dotnet build "$RUNNER_TEMP/HelloTemplate/HelloTemplate.csproj" -c Release
+          dotnet build "$RUNNER_TEMP/HelloFSharp/HelloFSharp.fsproj" -c Release
 
       - name: 打插件包
         env:
@@ -59,7 +62,15 @@ jobs:
           test -f dist/HelloTemplate/HelloTemplate.dll
           test -f dist/HelloTemplate/manifest.json
           if find dist/HelloTemplate -name 'Hosihikari.Plugin.Abstractions.dll' | grep -q .; then
-            echo 'the shared contract leaked into the plugin package' >&2
+            echo 'the shared contract leaked into the C# plugin package' >&2
+            exit 1
+          fi
+          cd "$RUNNER_TEMP/HelloFSharp"
+          bash ./pack.sh
+          test -f dist/HelloFSharp/HelloFSharp.dll
+          test -f dist/HelloFSharp/manifest.json
+          if find dist/HelloFSharp -name 'Hosihikari.Plugin.Abstractions.dll' | grep -q .; then
+            echo 'the shared contract leaked into the F# plugin package' >&2
             exit 1
           fi
 

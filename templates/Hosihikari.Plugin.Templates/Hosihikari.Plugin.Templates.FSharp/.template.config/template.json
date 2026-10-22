@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "星光",
+  "classifications": ["Hosihikari", "Plugin"],
+  "identity": "Hosihikari.Plugin.Templates.FSharp",
+  "name": "Hosihikari F# plugin",
+  "shortName": "hosihikari-plugin-fsharp",
+  "tags": {
+    "language": "F#",
+    "type": "project"
+  },
+  "sourceName": "Hosihikari.Plugin.Templates.FSharp",
+  "preferNameDirectory": true
+}

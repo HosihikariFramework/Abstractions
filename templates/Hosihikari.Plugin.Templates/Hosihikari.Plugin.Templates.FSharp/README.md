@@ -1,0 +1,38 @@
+# Hosihikari.Plugin.Templates.FSharp
+
+A precompiled F# Hosihikari plugin. The core's built-in assembly loader loads it; no loader
+package is required.
+
+## Build and pack
+
+Requires the .NET 10 SDK and a sibling `PluginManager` checkout (or
+`HOSIHIKARI_PLUGINMANAGER` pointing at one).
+
+```powershell
+pwsh ./pack.ps1
+```
+
+```bash
+bash ./pack.sh
+```
+
+The packer strips the shared layer and writes `dist/Hosihikari.Plugin.Templates.FSharp/` with the
+plugin DLL, its private dependencies, and `manifest.json`. Copy that directory to
+`<server>/plugins/Hosihikari.Plugin.Templates.FSharp/`.
+
+## Naming
+
+The project name becomes the assembly name, namespace, and manifest name. Use a valid F# name
+(letters, digits, dots; no spaces or hyphens). The manifest name must match the package directory
+name.
+
+## Lifecycle
+
+`OnLoad` runs after dependencies are ready. `OnEnable` opens the event/timer gate; a refusal keeps
+the plugin loaded and disabled. `OnUnload` releases what the plugin owns. An exception from a hook
+is a fault and the host unloads the plugin.
+
+## Licence
+
+The template scaffolding is MIT-0, see [LICENSE.md](LICENSE.md). The framework contract this
+project references (Abstractions 1.0.0) is MIT.

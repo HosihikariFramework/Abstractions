@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Hosihikari.Plugin.Templates.FSharp</AssemblyName>
+    <RootNamespace>Hosihikari.Plugin.Templates.FSharp</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- F# 运行时随插件包走；core 的共享层不含 FSharp.Core。 -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Plugin.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 契约住在共享层，插件包里不该有第二份身份。 -->
+    <PackageReference Include="Hosihikari.Plugin.Abstractions" Version="[1.0.0]" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+</Project>
