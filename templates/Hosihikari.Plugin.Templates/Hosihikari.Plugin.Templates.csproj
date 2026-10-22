@@ -24,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Hosihikari.Plugin.Template/**/*"
-             Exclude="Hosihikari.Plugin.Template/bin/**;Hosihikari.Plugin.Template/obj/**;Hosihikari.Plugin.Template/dist/**" />
+    <Content Include="Hosihikari.Plugin.Templates/**/*"
+             Exclude="Hosihikari.Plugin.Templates/bin/**;Hosihikari.Plugin.Templates/obj/**;Hosihikari.Plugin.Templates/dist/**" />
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Include="LICENSE.md" Pack="true" PackagePath="\" />
   </ItemGroup>

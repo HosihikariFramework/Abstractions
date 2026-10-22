@@ -3,6 +3,6 @@
     <Project Path="src/Hosihikari.Plugin.Abstractions.csproj" />
   </Folder>
   <Folder Name="/templates/">
-    <Project Path="templates/Hosihikari.Plugin.Template/Hosihikari.Plugin.Templates.csproj" />
+    <Project Path="templates/Hosihikari.Plugin.Templates/Hosihikari.Plugin.Templates.csproj" />
   </Folder>
 </Solution>
