@@ -69,6 +69,23 @@ Loader's business**. `api_version` and `manifest_version` must equal `PluginCont
 `PluginContractInfo.CurrentManifestVersion`; `entry` must stay inside the package. A violation is rejected
 **before** anything is loaded, with a readable report.
 
+## Loader diagnostics
+
+A loader can implement the optional `IPluginLoaderDiagnostics` companion interface. After
+`CanLoad` selects the loader and before `Load` runs, the manager calls
+`Validate(manifest, packageDirectory)`. A non-empty list becomes part of the load report and the
+package is skipped; an empty list lets the load continue.
+
+```csharp
+public IReadOnlyList<string> Validate(PluginManifest manifest, string packageDirectory)
+{
+    var entryPath = Path.Combine(packageDirectory, manifest.EntryPath);
+    return File.Exists(entryPath)
+        ? []
+        : [$"entry not found: {manifest.EntryPath}"];
+}
+```
+
 ## Things an author should know
 
 - **Hooks promise order and idempotence only** — not which server phase they land in. The world may

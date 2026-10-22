@@ -57,6 +57,22 @@ public sealed class MyPlugin : IPlugin
 
 `type` 是父级加载器的路由键，恒为 `hosihikari`；`extraInfo.loader` 决定由哪个加载器处理 —— **怎么从包里找到入口，是那个加载器自己的事**。`api_version` 与 `manifest_version` 必须分别等于 `PluginContractInfo.CurrentApiVersion` 与 `PluginContractInfo.CurrentManifestVersion`；`entry` 必须是包内相对路径。不满足的包在**载入之前**就会被剔除并给出可读报告。
 
+## 加载器诊断
+
+加载器可以实现可选的 `IPluginLoaderDiagnostics` 伴随接口。管理者在 `CanLoad` 选中加载器之后、
+`Load` 开始之前调用 `Validate(manifest, packageDirectory)`；返回非空列表时，问题进入装载报告并
+跳过该包，空列表则继续装载。
+
+```csharp
+public IReadOnlyList<string> Validate(PluginManifest manifest, string packageDirectory)
+{
+    var entryPath = Path.Combine(packageDirectory, manifest.EntryPath);
+    return File.Exists(entryPath)
+        ? []
+        : [$"入口不存在：{manifest.EntryPath}"];
+}
+```
+
 ## 作者要知道的几条
 
 - **钩子只承诺顺序与幂等**，不承诺它们落在服务器的哪个阶段 —— `OnEnable` 时世界未必已加载。
